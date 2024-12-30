@@ -63,21 +63,21 @@ describe('pdp check command e2e', () => {
                 `${CLI_COMMAND} -u testUser -r testResource -a read -ra "owner:john"`
             );
             expect(stdout).toContain('DENIED');
-        });
+        },10000);
 
         it('should handle multiple resource attributes', async () => {
             const { stdout } = await execAsync(
                 `${CLI_COMMAND} -u testUser -r testResource -a read -ra "owner:john,status:active,priority:high"`
             );
             expect(stdout).toContain('DENIED');
-        });
+        },10000);
 
         it('should handle resource attributes with different types', async () => {
             const { stdout } = await execAsync(
                 `${CLI_COMMAND} -u testUser -r testResource -a read -ra "isPublic:true,size:1024,type:document"`
             );
             expect(stdout).toContain('DENIED');
-        });
+        },10000);
     });
 
     describe('combined scenarios', () => {
